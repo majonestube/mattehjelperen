@@ -1,0 +1,139 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_algebraiske_uttrykk', category='Regelbok', title='Algebraiske uttrykk')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_algebraiske_uttrykk')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Algebraiske uttrykk
+    </h1>
+    <div class="info">
+      <p>
+        Et algebraisk uttrykk er et regnestykke som inkluderer minst em bokstav.
+        Dette bruker man ofte for å lage regler eller formler.
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Skrive algebraiske uttrykk
+      </p>
+      <p>
+        For å skrive et algebraisk uttrykk, kaller man en ukkjent verdi for en bokstav,
+        og bruker denne bokstaven til å lage regnestykker.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>Martine er "m" år gammel. Da kan vi lage ulike regnestykker, som:</p>
+      <p>
+        Martine om 5 år &rarr; m + 5
+      </p>
+      <p>
+        Martine for 2 år siden &rarr; m - 2
+      </p>
+      <p>
+        Det dobbelte av Martines alder &rarr; 2m
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Finne verdien av algebraiske uttrykk
+      </p>
+      <p>
+        Om vi har et algebraisk uttrykk, kan vi finne verdien når vi vet 
+        en verdi for variabelen. Da setter man inn verdien i stedet for bokstaven,
+        og regner ut.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>Martine er 28 år gammel. Da kan vi finne ut av verdiene til uttrykkene i forrige eksempel:</p>
+      <p>m + 5 = 28 + 5 = 33 år</p>
+      <p>m - 2 = 28 - 2 = 26 år</p>
+      <p>2m = 2 &#215; 28 = 56 år</p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Forenkling av algebraiske uttrykk
+      </p>
+      <p>
+        Når vi har lengre algebraiske uttrykk, kan vi ofte trekke det sammen 
+        ved å kombinere noen av leddene. Da tenker vi at vi "teller" hvor mange
+        vi har av de ulike bokstavene.
+      </p>
+      <p class="red">
+        Hovedregel: Vi kan kun trekke sammen ledd med bokstaver med andre ledd med 
+        samme bokstaver, og rene konstanter (tall) med andre konstanter.       
+      </p>
+      <p>
+        Tips: Det kan være smart å tegne "bobler" rundt leddene, sammen med tilhørende 
+        fortegn. Fortegnene hører sammen med det som står bak. Når vi har gjort det, kan vi 
+        flytte rundt på "boblene" som vi vil. 
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>Vi skal trekke sammen: 2a + 3b - 6 + 5a - 7b - 4 + a</p>
+      <img src="{{url_for('static', filename='pictures/algebraiske-uttrykk.png')}}">
+      <p>
+        Når vi har sortert boblene, slik at ledd med samme bokstaver står sammen, kan vi trekke sammen.
+      </p>
+      <img src="{{url_for('static', filename='pictures/algebraiske-uttrykk-svar.png')}}">
+      <p>
+        Siden ingen av disse leddene har samme bokstav nå, kan vi ikke gjøre noe mer. 
+        Dette blir da vårt endelige svar. 
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Ganging med algebraiske uttrykk
+      </p>
+      <p>
+        Om man skal gange to algebraiske uttrykk, ganges bokstaver med 
+        like bokstaver, og tall med tall. Man får ofte et svar som er en 
+        kombinasjon av en konstant og potenser.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>
+        <span class="red">2ab</span> &#215; <span class="blue">5a&sup2;b<sup>5</sup></span> &#215; <span class="purple">a</span>
+      </p>
+      <p>
+        = <span class="red">2&#215;a&#215;b</span> &#215; <span class="blue">5&#215;a&#215;a&#215;b&#215;b&#215;b&#215;b&#215;b</span> &#215; <span class="purple">a</span>
+      </p>
+      <p>
+        = <span class="red">2</span> &#215; <span class="blue">5</span> &#215; <span class="red">a</span> &#215; <span class="blue">a &#215; a</span> &#215; <span class="purple">a</span>
+        &#215; <span class="red">b</span> &#215; <span class="blue">b &#215; b &#215; b &#215; b &#215; b &#215; b</span>
+      </p>
+      <p>
+        = 10 &#215; a<sup>4</sup> &#215; b<sup>6</sup>
+      </p>
+      <p>= 10a<sup>4</sup>b<sup>6</sup></p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Deling med algebraiske uttrykk</p>
+      <p>
+        Om man skal dele algebraiske uttrykk, kan man sette opp som brøk, faktorisere, 
+        og forkorte brøken. Dette kan kun gjøres om man kun har faktorer oppe og nede (altså
+        at alt er ganget med hverandre).
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>10a<sup>5</sup>b<sup>3</sup> : 5a<sup>2</sup>b<sup>8</sup></p>
+      <p>
+        = <sup>5&#215;2&#215;a&#215;a&#215;a&#215;a&#215;a&#215;b&#215;b&#215;b</sup>&frasl;
+        <sub>5&#215;a&#215;a&#215;b&#215;b&#215;b&#215;b&#215;b&#215;b&#215;b&#215;b</sub>
+      </p>
+      <p>
+        = <sup><span class="line-through">5</span>&#215;2&#215;a&#215;a&#215;a&#215;<span class="line-through">a&#215;a&#215;b&#215;b&#215;b</span></sup>&frasl;
+        <sub><span class="line-through">5&#215;a&#215;a</span>&#215;b&#215;b&#215;b&#215;b&#215;b&#215;<span class="line-through">b&#215;b&#215;b</span></sub>
+      </p>
+      <p>
+        = <sup>2a<sup>3</sup></sup>&frasl;<sub>b<sup>5</sup></sub>
+      </p>
+    </div>
+  </div>
+{% endblock %}

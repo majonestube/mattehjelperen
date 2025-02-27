@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/rulebook.css')}}">
+{% endblock %}
+
+{% block pagename %}
+  <div class="rulebook-pagename">
+    Regelbok
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="rulebook-nav">
+    <a href="{{url_for('pages.rulebook_tall')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/tall-og-tallregning.png')}}">
+        <div class="rulebook-description">
+          Tall og tallregning
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_algebra')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/algebra.png')}}">
+        <div class="rulebook-description">
+          Algebra
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.not_developed')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/funksjoner.png')}}">
+        <div class="rulebook-description">
+          Funksjoner
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.not_developed')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/statistics.png')}}">
+        <div class="rulebook-description">
+          Statistikk
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.not_developed')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/sannsynlighet.png')}}">
+        <div class="rulebook-description">
+          Sannsynlighet
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.not_developed')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/plangeometri.png')}}">
+        <div class="rulebook-description">
+          Plangeometri
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.not_developed')}}">
+      <div class="rulebook-category">
+        <img src="{{url_for('static', filename='icons/romgeometri.png')}}">
+        <div class="rulebook-description">
+          Romgeometri
+        </div>
+      </div>
+    </a>
+  </div>
+  
+
+{% endblock %}

@@ -1,0 +1,129 @@
+.pagename {
+  color: rgb(220, 68, 68)
+}
+
+.my-page-buttons {
+  position: absolute;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: end;
+
+}
+
+.my-page-buttons button {
+  color: white;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  border: 2px solid white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+
+.logout-button {
+  background-color: rgb(175, 0, 0);
+}
+
+.logout-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(175, 0, 0);
+  cursor: pointer;
+}
+
+.logout-button:active {
+  background-color: rgba(175, 0, 0, 0.7);
+  color: white
+}
+
+.change-password-button {
+  background-color: rgb(69, 0, 106);
+}
+
+.change-password-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(69, 0, 106);
+  cursor: pointer;
+}
+
+.change-password-button:active {
+  background-color: rgba(69, 0, 106, 0.7);
+  color: white
+}
+
+.create-post-button {
+  background-color: rgb(255, 187, 85);
+}
+
+.create-post-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(255, 187, 85);
+  cursor: pointer;
+}
+
+.create-post-button:active {
+  background-color: rgba(255, 187, 85, 0.7);
+  color: white
+}
+
+.admin-change-password-button {
+  background-color: rgb(0, 82, 0);
+}
+
+.admin-change-password-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(0, 82, 0);
+  cursor: pointer;
+}
+
+.admin-change-password-button:active {
+  background-color: rgba(0, 82, 0, 0.7);
+  color: white
+}
+
+.check-messages-button {
+  background-color: rgb(1, 95, 119);
+}
+
+.check-messages-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(1, 95, 119);
+  cursor: pointer;
+}
+
+.check-messages-button:active {
+  background-color: rgba(1, 95, 119, 0.7);
+  color: white
+}
+
+.favorites {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 10px;
+  margin-right: 200px
+}
+
+.favorite {
+  height: 110px;
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid black;
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  background-color: rgba(220, 68, 68, 0.5);
+  text-align: center;
+}
+
+.favorite:hover {
+  cursor: pointer;
+  background-color: rgba(220, 68, 68, 0.9);
+}
+
+.favorite:active {
+  opacity: 0.7
+}

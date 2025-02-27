@@ -1,0 +1,67 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_regnerekkefolge', category='Regelbok', title='Regne-rekkefølge')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_regnerekkefolge')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Regnerekkefølge
+    </h1>
+    <div>
+      <p>
+        For at svaret vårt skal bli riktig, må vi regne ut riktig ting først.
+        Vi bytter ikke om på hvor ting står i regnestykket, men regner ut noen ting
+        før andre. Vi følger lista nedenfor, og starter på punkt 1. Når vi har
+        forskjellige ting som skal regnes ut på samme punkt, regner vi fra <strong>
+        venstre til høyre</strong>. Dette er spesielt viktig når vi har subtraksjon og 
+        divisjon i stykket.
+      </p>
+    </div>
+    <div class="box">
+      <p class="in-box-headline">
+        Liste over rekkefølge
+      </p>
+      <ol>
+        <li>Parentes</li>
+        <li>Potens/røtter</li>
+        <li>Gange/dele</li>
+        <li>Pluss/minus</li>
+      </ol>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Eksempler
+      </p>
+      <p class="in-box-headline">Eksempel 1</p>
+      <p>2 + 3 &#215; 5</p>
+      <p>= 2 + 15 &rarr; Multiplikasjon før addisjon</p>
+      <p>= 17</p>
+      <p class="in-box-headline">Eksempel 2</p>
+      <p>3&sup2; + 2 &#215; 5</p>
+      <p>= 9 + 2 &#215; 5 &rarr; Potens først</p>
+      <p>= 9 + 10 &rarr; Multiplikasjon før addisjon</p>
+      <p>= 19</p>
+      <p class="in-box-headline">Eksempel 3</p>
+      <p>2&sup3; &#215; (4 - 2)</p>
+      <p>= 2&sup3; &#215; 2 &rarr; Parentes først</p>
+      <p>= 8 &#215; 2 &rarr; Potens før multiplikasjon</p>
+      <p>= 16</p>
+      <p class="in-box-headline">Eksempel 4</p>
+      <p>(2 + 4)&sup2; &#215; 3</p>
+      <p>= 6&sup2; &#215; 3 &rarr; Parentes først</p>
+      <p>= 36 &#215; 3 &rarr; Potens før multiplikasjon</p>
+      <p>= 108</p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/posts.css')}}">
+{% endblock %}
+
+{% block title %}Ny post -{% endblock %}
+
+{% block pagename %}Ny post{% endblock %}
+
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    <div class="flash">
+      {{message}}
+    </div>
+  {% endfor %}
+  <form method="post">
+    <label for="title">Tittel</label>
+    <input class='title-bar' name="title" id="title" value="{{request.form['title']}}" required>
+    <label for="body">Innhold</label>
+    <textarea name="body" id="body">{{request.form['body']}}</textarea>
+    <div>
+      <button class="submit-button" type="submit">Lagre</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS favorite;
+
+CREATE TABLE user (
+  user_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL, 
+  admin BOOLEAN NOT NULL DEFAULT 0
+);
+
+CREATE TABLE post (
+  post_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user(user_id)
+);
+
+CREATE TABLE message (
+  message_id INTEGER PRIMARY KEY AUTOINCREMENT,
+  sender_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  topic TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (sender_id) REFERENCES user(user_id)
+);
+
+CREATE TABLE favorite (
+  user_id INTEGER NOT NULL,
+  page_id TEXT NOT NULL,
+  category TEXT NOT NULL,
+  title TEXT NOT NULL,
+  PRIMARY KEY (user_id, page_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
+);

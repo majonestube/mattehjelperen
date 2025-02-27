@@ -1,0 +1,75 @@
+h1 {
+  text-align: center;
+}
+
+article {
+  border: 2px solid lightgray;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.05);
+  position: relative
+}
+
+.post-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.about {
+  margin-top: -10px;
+  margin-bottom: 15px;
+  color: rgb(131, 131, 131);
+  font-weight: 300;
+}
+
+.edit-link {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: rgb(0, 0, 135);
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+input, 
+textarea {
+  flex: 1fr;
+  margin-bottom: 20px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+}
+
+textarea {
+  height: 100px;
+}
+
+label {
+  margin-bottom: 10px
+}
+
+.submit-button {
+  background-color: rgb(47, 47, 47);
+  color: white;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  border: 2px solid white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+
+.submit-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(47, 47, 47);
+  cursor: pointer;
+}
+
+.submit-button:active {
+  background-color: rgba(11, 167, 19, 0.751)
+}

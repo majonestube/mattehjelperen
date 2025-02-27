@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} Mattehjelperen</title>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/headernav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/general.css')}}">
+    {% block stylesheets %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="page-title-section">
+        <a href="{{url_for('general.index')}}">
+          <div class="page-title">
+            <div class="small-screen">
+              M
+            </div>
+            <div class="wide-screen">
+              Mattehjelperen
+            </div>
+          </div>
+        </a>
+        <div class="pagename">
+          {% block pagename %}{% endblock %}
+        </div>
+      </div>
+      <nav>
+        <div class="rulebook-icon-container">
+          <a href="{{url_for('pages.rulebook')}}">
+            <img class="rulebook-icon" src="{{url_for('static', filename='icons/rulebook.png')}}">
+          </a>
+            <div class="tooltip">
+              Regelbok
+            </div>
+        </div>
+        <div class="tasks-icon-container">
+          <a href="{{url_for('pages.tasks')}}">
+            <img class="tasks-icon" src="{{url_for('static', filename='icons/tasks.png')}}">
+          </a>
+          <div class="tooltip">
+            Oppgaver
+          </div>
+        </div>
+        <div class="video-icon-container">
+          <a href="{{url_for('pages.not_developed')}}">
+            <img class="video-icon" src="{{url_for('static', filename='icons/video.png')}}">
+          </a>
+          <div class="tooltip">
+            Videoer
+          </div>
+        </div>
+        <div class="link-icon-container">
+          <a href="{{url_for('pages.not_developed')}}">
+            <img class="link-icon" src="{{url_for('static', filename='icons/link.png')}}">
+          </a>
+          <div class="tooltip">
+            Linker
+          </div>
+        </div>
+        <div class="profile-icon-container">
+          {% if g.user %}
+            <a href="{{url_for('auth.my_page')}}">
+              <img class="profile-icon" src="{{url_for('static', filename='icons/profile.png')}}">
+            </a>
+            <div class="tooltip">
+              Min profil
+            </div>
+          {% else %}
+            <a href="{{url_for('auth.login')}}">
+              <img class="profile-icon" src="{{url_for('static', filename='icons/profile.png')}}">
+            </a>
+            <div class="registrer-tooltip">
+              Logg inn/Registrer
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="content">
+      {% block content %}{% endblock %}
+    </section>
+    <footer>
+      <div>
+        Har du spørsmål eller tips? Kontakt oss da vel!
+      </div>
+      <div>
+        {% if g.user %}
+          <a class="link" href="{{url_for('general.message_to_admin')}}">
+            Send oss en melding
+          </a>
+        {% else %}
+          <a class="link" href="{{url_for('auth.login')}}">
+            Logg inn eller registrer deg for å sende oss en melding
+          </a>
+        {% endif %}
+      </div>
+      <div class="link">
+        <a class="link" href='mailto:martine.vold@hotmail.com'>
+          Send oss en mail 
+        </a>
+      </div>
+      
+    </footer>
+  </body>
+</html>

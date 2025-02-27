@@ -1,0 +1,81 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_likninger', category='Regelbok', title='Likninger')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_likninger')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Likninger
+    </h1>
+    <div class="info">
+      <p>
+        En likning er noe vi bruker når vi skal regne ut av noe der deler av regnestykket er ukjent. For
+        at noe skal være en likning må det ha:
+        <ul>
+          <li>To sider som er like</li>
+          <li>Et er-lik-tegn som deler sidene</li>
+          <li>Algebraisk(e) uttrykk </li>
+        </ul>
+      </p>
+      <p>
+        Vi kan tenke på likninger som en vektskål. Det er viktig at vi altså gjør noe som gjør at sidene 
+        ikke lenger veier like mye (altså er like).
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Løse likninger ved å tegne kuler og pinner</p>
+      <p>
+        Målet med likninger er alltid å finne ut hva den ukjente (vanligvis x) er.
+        Svaret vi vil ha er "x = ...".
+      </p>
+      <p>
+        Noen ganger kan det hjelpe oss å se det for oss. Vi kan tegne x'ene som kuler, 
+        og 1'erne som pinner. Etter dette kan vi fjerne det som er likt på begge sider.
+        (OBS: Dette hjelper ikke på alle likninger.)
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p> 2x + 4 = 3x + 2</p>
+      <p>Vi kan tegne dette:</p>
+      <img src="{{url_for('static', filename='pictures/likning-som-tegning-1.png')}}">
+      <p>
+        Som vi kan se, er det ikke så viktig å tegne fint når man bare skal lage en skisse... 
+        Vi ser nå etter hva som er likt, og kan se at vi har to kuler på begge sidene, og to pinner på 
+        begge sidene. Disse kan vi da fjerne (fra begge sider).
+      </p>
+      <img src="{{url_for('static', filename='pictures/likning-som-tegning-2.png')}}">
+      <p>Vi står da igjen med følgende:</p>
+      <img src="{{url_for('static', filename='pictures/likning-som-tegning-3.png')}}">
+      <p>
+        Til slutt kan vi konvertere tilbake til tall og bokstaver. Husk da at kulene var "x"
+        og pinnene var 1'ere. Vi får derfor: <strong>x = 2</strong>.
+      </p>
+    </div>
+    <p>
+      Vanligvis tegner vi ikke opp likningen, men gjør den samme regneoperasjonen på hver side av 
+      er-lik-tegnet. Målet er å få alle x'ene på en side, og alle tallene på den andre siden. Som
+      hovedregeln kan vi "fjerne" noe ved å bruke den motsatte regneoperasjonen. Nedenfor er noen konkrete eksempler. 
+    </p>
+    <div class="box">
+      <p class="box-headline">"Fjerne" noe vi har plusset med</p>
+      <p>
+        Når vi vil "fjerne" noe vi har addert med, subtraherer vi på begge sider.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>2x + 3 = x + 5</p>
+      <p>2x + 3 <span class="red">- x</span> = x + 5 <span class="red">- x</span></p>
+      <p>x + 3 <span class="red">- 3</span></p>
+    </div>
+
+  </div>
+{% endblock %}

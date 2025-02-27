@@ -1,0 +1,175 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_brokregning', category='Regelbok', title='Brøkregning')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_brokregning')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Brøkregning
+    </h1>
+    <div class="info">
+      <p>
+        En brøk har en brøkstrek i midten. Tallet over brøkstreken 
+        kalles en <strong>teller</strong>, og tallet under brøkstreken 
+        kalles en <strong>nevner</strong>.
+      </p>
+      <img src="{{url_for('static', filename='pictures/brok.png')}}">
+      <p>
+        Vi har ulike regler når vi regner med brøk. Når vi skal <strong>addere</strong>
+        (pluss) eller <strong>subtrahere</strong> (minus), trenger vi å ha samme nevner 
+        på brøkene. Dette trenger vi ikke når vi skal <strong>multiplisere</strong> (gange)
+        og <strong>dividere</strong> (dele).
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Forkorting og utviding
+      </p>
+      <p>
+        Det finnes uendelig mange brøker som er verdt det samme. Disse kaller vi 
+        <strong>likeverdige brøker</strong>. For å finne likeverdige brøker, kan
+        vi gange eller dele med det samme over og under brøkstreken.
+      </p>
+      <p class="in-box-headline">
+        Forkorting
+      </p>
+      <p>
+        <sup>3</sup>&frasl;<sub>9</sub> &rarr; 
+        Både 3 og 9 er delelig på 3 &rarr; 
+        <sup>3:3</sup>&frasl;<sub>9:3</sub> = <sup>1</sup>&frasl;<sub>3</sub>
+      </p>
+      <p>
+        <sup>20</sup>&frasl;<sub>50</sub> &rarr;
+        Både 20 og 50 er delelig på 10 &rarr; 
+        <sup>20:10</sup>&frasl;<sub>50:10</sub> = <sup>2</sup>&frasl;<sub>5</sub>
+      </p>
+      <p class="in-box-headline">
+        Utviding
+      </p>
+      <p>
+        Vi kan utvide med det vi vil, ut i fra hva oppgaven ber oss om.
+      </p>
+      <p>
+        <sup>2</sup>&frasl;<sub>3</sub> &rarr; La oss si at jeg vil ha 9 som nevner &rarr;
+        <sup>2&#215;3</sup>&frasl;<sub>3&#215;3</sub> = <sup>6</sup>&frasl;<sub>9</sub>
+      </p>
+      <p>
+        <sup>1</sup>&frasl;<sub>5</sub> &rarr; La oss si at jeg vil ha 100 som nevner &rarr;
+        <sup>1&#215;20</sup>&frasl;<sub>5&#215;20</sub> = <sup>20</sup>&frasl;<sub>100</sub>
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Addisjon og subtraksjon
+      </p>
+      <p>
+        Når nevner er lik, adderer vi telleren.
+      </p>
+      <p class="in-box-headline">
+        Eksempler
+      </p>
+      <p>
+        <sup>2</sup>&frasl;<sub>9</sub> + <sup>1</sup>&frasl;<sub>9</sub> =
+        <sup>3</sup>&frasl;<sub>9</sub> (=<sup>1</sup>&frasl;<sub>3</sub>)
+      </p>
+      <p>
+        <sup>3</sup>&frasl;<sub>5</sub> - <sup>2</sup>&frasl;<sub>5</sub> =
+        <sup>1</sup>&frasl;<sub>5</sub>
+      </p>
+      <p>
+        Når nevneren er ulik, må vi finne <strong>felles nevner</strong> først. 
+        Dette står forklart i egen rute lenger nede.
+      </p> 
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Multiplikasjon
+      </p>
+      <p>
+        Når vi multipliserer to brøker, ganger vi teller med teller, og nevner med nevner.
+      </p>
+      <p class="in-box-headline">
+        Eksempler
+      </p>
+      <p>
+        <sup>1</sup>&frasl;<sub>3</sub> &#215; <sup>2</sup>&frasl;<sub>3</sub> = <sup>1&#215;2</sup>&frasl;<sub>3&#215;3</sub>
+        = <sup>2</sup>&frasl;<sub>9</sub>
+      </p>
+      <p>
+        <sup>4</sup>&frasl;<sub>7</sub> &#215; <sup>1</sup>&frasl;<sub>2</sub> = <sup>4&#215;1</sup>&frasl;<sub>7&#215;2</sub>
+        = <sup>4</sup>&frasl;<sub>14</sub> (= <sup>2</sup>&frasl;<sub>7</sub>)
+      </p>
+      <p>
+        Når vi multipliserer et tall med en brøk, kan vi gjøre om til brøk, slik at vi 
+        kan bruke regelen ovenfor. Dette blir det samme som å kun gange med telleren.
+      </p>
+      <p class="in-box-headline">
+        Eksempel
+      </p>
+      <p>
+        <sup>3</sup>&frasl;<sub>4</sub>&#215;2 = <sup>3&#215;2</sup>&frasl;<sub>4</sub> =
+        <sup>6</sup>&frasl;<sub>4</sub> (= <sup>3</sup>&frasl;<sub>2</sub>)
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Divisjon
+      </p>
+      <p>
+        Når vi multipliserer to brøker, snur vi den brøken vi deler på (den andre brøken),
+        og så multipliserer vi som ovenfor.
+      </p>
+      <p class="in-box-headline">
+        Eksempel
+      </p>
+      <p>
+        <sup>1</sup>&frasl;<sub>2</sub> : <sup>3</sup>&frasl;<sub>4</sub>
+        &rarr; Vi snur den andre brøken, og multipliserer &rarr;
+        <sup>1</sup>&frasl;<sub>2</sub> &#215; <sup>4</sup>&frasl;<sub>3</sub> =
+        <sup>1&#215;4</sup>&frasl;<sub>2&#215;3</sub> =
+        <sup>4</sup>&frasl;<sub>6</sub> (= <sup>2</sup>&frasl;<sub>3</sub>)
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Felles nevner
+      </p>
+      <p>
+        Når vi skal addere eller subtrahere brøker, må de alle ha samme nevner. 
+        Da finner vi det som kalles felles nevner. Dette kan vi også gjøre om vi skal sammenligne to brøker.
+        Det finnes en generell regel vi kan bruke, som er spesielt fin om vi har en kalkulator. 
+        Da må vi bare huske at vi kanskje må forkorte brøken etterpå.
+      </p>
+      <p>
+        <strong>
+          Generell regel &rarr; <sup>a</sup>&frasl;<sub>b</sub> + <sup>c</sup>&frasl;<sub>d</sub>
+          = <sup>a&#215;d + b&#215;c</sup>&frasl;<sub>b&#215;d</sub>
+        </strong>
+      </p>
+      <p class="in-box-headline">
+        Eksempler
+      </p>
+      <p>
+        <sup>1</sup>&frasl;<sub>3</sub> + <sup>2</sup>&frasl;<sub>5</sub> =
+        <sup>1&#215;5 + 3&#215;2</sup>&frasl;<sub>3&#215;5</sub> = 
+        <sup>5+6</sup>&frasl;<sub>15</sub> = <sup>11</sup>&frasl;<sub>15</sub>
+      </p>
+      <p>
+        <sup>2</sup>&frasl;<sub>5</sub> - <sup>3</sup>&frasl;<sub>10</sub> =
+        <sup>2&#215;10 - 3&#215;5</sup>&frasl;<sub>5&#215;10</sub> =
+        <sup>20 - 15</sup>&frasl;<sub>50</sub> = <sup>5</sup>&frasl;<sub>50</sub>
+        (= <sup>1</sup>&frasl;<sub>10</sub>)
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_potenser', category='Regelbok', title='Potenser')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_potenser')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Potenser
+    </h1>
+    <div class="info">
+      <p>
+        En potens betyr at et tall er ganget med seg selv mange ganger.
+        Dette bruker vi gjerne når vi snakker om veldig store eller små tall.
+        Det gjør også at vi kan skrive regnestykker på kortere måter, så de blir lettere å regne med.
+      </p>
+    </div>
+    <img src="{{url_for('static', filename='pictures/potens.png')}}">
+    <div class="box">
+      <p class="box-headline">
+        Hva betyr det?
+      </p>
+      <p>
+        Grunntallet er tallet vi ganger med seg selv. Eksponenten er hvor mange 
+        ganger vi må gange tallet med seg selv, altså hvor mange vi skal ha av grunntallet.
+      </p>
+      <p class="in-box-headline">
+        Eksempler
+      </p>
+      <p>
+        3<sup>4</sup> &rarr; Sier "tre i fjerde", eller "tre opphøyd i fire" 
+        &rarr; Betyr 3&#215;3&#215;3&#215;3
+      </p>
+      <p>
+        4<sup>2</sup> &rarr; Sier "fire i andre", eller "fire opphøyd i to" 
+        &rarr; Betyr 4&#215;4
+      </p>
+      <p>
+        10<sup>6</sup> &rarr; Sier "ti i sjette", eller "ti opphøyd i seks" 
+        &rarr; Betyr 10&#215;10&#215;10&#215;10&#215;10&#215;10
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Verdien
+      </p>
+      <p>
+        Verdien til potensen er hva det faktiske tallet er om vi ganger det ut.
+      </p>
+      <p class="in-box-headline">Eksempler</p>
+      <p>
+        Verdien til 3<sup>4</sup> &rarr; 3&#215;3&#215;3&#215;3 
+        = 9&#215;3&#215;3 = 9&#215;9 = 81
+      </p>
+      <p>
+        Verdien til 4<sup>2</sup> &rarr; 4&#215;4 = 16
+      </p>
+      <p>
+        Noen ganger må vi finne verdien, for å regne ut resten av et regnestykke.
+      </p>
+      <p class="in-box-headline">
+        Eksempel
+      </p>
+      <p>
+        <span class="red">3<sup>2</sup></span> + <span class="blue">3<sup>3</sup></span>
+        = <span class="red">3&#215;3</span>&#215;<span class="blue">3&#215;3&#215;3</span>
+        = <span class="red">9</span> + <span class="blue">27</span> = 36
+      </p>
+      <p>
+        (<span class="red">3<sup>2</sup></span> - 4) + 6 =
+        (<span class="red">9</span> - 4) + 6 = 5 + 6 = 11
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Multiplikasjon av potenser</p>
+      <p>
+        <strong>Kun hvis</strong> potenser har samme <strong>grunntall</strong>, kan vi addere eksponentene.
+      </p>
+      <p class="in-box-headline">
+        Eksempler
+      </p>
+      <p>
+        3<sup>4</sup>&#215;3<sup>6</sup> = (3&#215;3&#215;3&#215;3)&#215;(3&#215;3&#215;3&#215;3&#215;3&#215;3)
+        = 3<sup>10</sup> &rarr; 3<sup>4+6</sup> = 3<sup>10</sup>
+      </p>
+    </div>
+    <div class="box">
+      <p>
+        <strong>Kun hvis</strong> potenser har samme <strong>grunntall</strong>, kan vi subtrahere 
+        eksponentene. Dette er fordi om vi ganger og deler på samme tall, kan dette strykes. Vi forkorter egentlig bare brøken.
+      </p>
+      <p class="in-box-headline">Eksempler</p>
+      <p>
+        2<sup>5</sup> : 2<sup>3</sup> = <sup>2&#215;2&#215;2&#215;2&#215;2</sup>&frasl;<sub>2&#215;2&#215;2</sub> =
+        <sup>2&#215;2&#215;<span class="line-through">2&#215;2&#215;2</sup></span>&frasl;<span class="line-through"><sub>2&#215;2&#215;2</sub></span>
+        = <sup>2&#215;2</sup>&frasl;<sub>1</sub> = 2<sup>2</sup> &rarr; 2<sup>5-3</sup> = 2<sup>2</sup>
+      </p>
+      <p>
+        6<sup>12</sup> : 6<sup>7</sup> = 6<sup>12-7</sup> = 6<sup>5</sup>
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Negativt grunntall
+      </p>
+      <p>
+        For å regne med negative grunntall, må vi huske at om vi ganger to negative tall, 
+        får vi et positivt tall som svar. Vi må også se om grunntallet har en parentes rundt seg.
+        Om det er parentes, skal vi ha med fortegnet (minuset) når vi ganger. Om det ikke 
+        er parentes, skal fortegnet bli igjen utenfor.
+      </p>
+      <p class="in-box-headline">Eksempler</p>
+      <p>
+        (-2)<sup>3</sup> = (-2)&#215;(-2)&#215;(-2) = 4&#215;(-2) = (-8)
+      </p>
+      <p>
+        (-2)<sup>4</sup> = (-2)&#215;(-2)&#215;(-2)&#215;(-2) = 4&#215;4 = 16
+      </p>
+      <p>
+        -2<sup>4</sup> = -(2&#215;2&#215;2&#215;2) = -16
+      </p>
+    </div>
+  </div>
+{% endblock %}

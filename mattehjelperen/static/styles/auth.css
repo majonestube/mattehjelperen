@@ -1,0 +1,68 @@
+.auth-page {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.login-form
+ {
+  height: 110px;
+  max-width: 500px;
+}
+
+.register-form,
+.change-password {
+  height: 150px;
+  max-width: 500px
+}
+
+.username-container,
+.password-container, 
+.confirm-password-container,
+.previous-password-container,
+.new-password-container {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+}
+
+.submit-button {
+  background-color: rgb(47, 47, 47);
+  color: white;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  border: 2px solid white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+
+.submit-button:hover {
+  background-color: rgb(213, 210, 210);
+  color: rgb(47, 47, 47);
+  cursor: pointer;
+}
+
+.submit-button:active {
+  background-color: rgba(11, 167, 19, 0.751)
+}
+
+.change-page-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.link {
+  margin-top: 10px;
+  text-decoration: underline;
+  color:  rgb(0, 0, 163)
+}
+
+.link a {
+  color: rgb(0, 0, 163)
+}

@@ -1,0 +1,91 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_delelighet', category='Regelbok', title='Delelighet')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_delelighet')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Delelighet
+    </h1>
+    <div>
+      Et tall er delelig med et annet tall <strong>kun hvis</strong> man kan 
+      dele det og få et helt tall til svar.
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Eksempler
+      </p>
+      <p class="in-box-headline">
+        Er 3 delelig på 2?
+      </p>
+      <p>
+        3 : 2 = 1,5 &rarr; Nei, 3 er ikke delelig på 2, for vi får ikke et helt tall som svar.
+      </p>
+      <p class="in-box-headline">
+        Er 50 delelig på 2?
+      </p>
+      <p>
+        50 : 2 = 25 &rarr; Ja, 50 er delelig på 2, for vi får et helt tall som svar.
+      </p>
+    </div>
+    <div class="headline">
+      Regler:
+    </div>
+    <table class="delelighet-table">
+      <tr>
+        <th>Et tall er delelig på...</th>
+        <th>Hvis...</th>
+        <th>Eksempler</th>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Siste siffer er et partall (0, 2, 4, 6, 8)</td>
+        <td>
+          <p>1<span class="red">2</span></p>
+          <p>2<span class="red">8</span></p>
+          <p>1025<span class="red">0</span></p>
+          <p>333<span class="red">4</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Tverrsummen (summen av alle siffer) er delelig på 3</td>
+        <td>
+          <p>21 &rarr; 2 + 1 = 3</p>
+          <p>432 &rarr; 4 + 3 + 2 = 9</p>
+          <p>777 &rarr; 7 + 7 + 7 = 21 &rarr; 2 + 1 = 3</p>
+        </td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Siste siffer er 0 eller 5</td>
+        <td>
+          <p>4<span class="red">5</span></p>
+          <p>23456789<span class="red">0</span></p>
+          <p>21<span class="red">5</span></p>
+        </td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Siste siffer er 0</td>
+        <td>
+          <p>123<span class="red">0</span></p>
+          <p>999999<span class="red">0</span></p>
+          <p>100000000<span class="red">0</span></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+{% endblock %}

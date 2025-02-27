@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/posts.css')}}">
+{% endblock %}
+
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    <div class="flash">
+      {{message}}
+    </div>
+  {% endfor %}
+  <form method="post">
+    <label for="title">Tittel</label>
+    <input name="title" id="title"
+      value="{{request.form['title'] or post['title']}}" required>
+    <label for="body">Innhold</label>
+    <textarea name="body" id="body">{{request.form['body'] or post['body']}}</textarea>
+    <div>
+      <button class="submit-button" type="submit">Lagre</button>
+    </div>
+  </form>
+  <hr>
+  <form action="{{url_for('general.delete', id=post['post_id'])}}" method="post">
+    <div>
+      <button class="submit-button" type="submit" onclick="return confirm('Er du sikker?');">Slett</button>
+    </div>
+  </form>
+{% endblock %}

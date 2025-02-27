@@ -1,0 +1,65 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_overslag', category='Regelbok', title='Overslag')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_overslag')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Overslag
+    </h1>
+    <div class="info">
+      <p>
+        Vi gjør overslag når vi avrunder tallene for å gjøre regnestykket 
+        lettere for oss selv. Da finner vi et omtrentlig svar. Det er viktig
+        at vi prøver å runde av tallene ca. like mye i forhold til seg selv. 
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Generell regel
+      </p>
+      <p>
+        Pluss &rarr; Avrunder motsatt vei (noe opp og noe ned)
+      </p>
+      <p>
+        Ganging &rarr; Avrunder motsatt vei (noe opp og noe ned)
+      </p>
+      <p>
+        Minus &rarr; Avrunder samme vei (alt opp/ned)
+      </p>
+      <p>
+        Deling &rarr; Avrunder samme vei (alt opp/ned)
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Eksempler</p>
+      <p class="in-box-headline">Overslag av 225 + 310</p>
+      <p>225 &#8776; 250</p>
+      <p>310 &#8776; 300</p>
+      <p>225 + 310 &#8776; 250 + 300 = 550</p>
+      <p class="in-box-headline">Overslag av 8 &#215; 12</p>
+      <p>8 &#8776; 10</p>
+      <p>12 &#8776; 10</p>
+      <p>8&#215;10 &#8776; 10&#215;10 = 100</p>
+      <p class="in-box-headline">Overslag av 1350 - 849</p>
+      <p>1350 &#8776; 1500</p>
+      <p>849 &#8776; 1000</p>
+      <p>1350 - 849 &#8776; 1500 - 1000 = 500</p>
+      <p class="in-box-headline">Overslag av 480 : 0,8</p>
+      <p>480 &#8776; 500</p>
+      <p>0,8 &#8776; 1</p>
+      <p>480 : 0,8 &#8776; 500 : 1 = 500</p>
+    </div>
+  </div>
+{% endblock %}

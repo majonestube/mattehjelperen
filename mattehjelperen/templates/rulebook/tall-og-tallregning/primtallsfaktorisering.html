@@ -1,0 +1,90 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_primtallsfaktorisering', category='Regelbok', title='Primtalls-faktorisering')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_primtallsfaktorisering')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Primtallsfaktorisering
+    </h1>
+    <div class="info">
+      <p>
+        En faktor er det man ganger med i et gangestykke:
+      </p>
+      <p>
+        faktor &#215; faktor = produkt
+      </p>
+        Faktorisering betyr derfor at du skriver et tall som et gangestykke. Om de primtallsfaktoriserer, er
+        alle faktorer primtall.
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Primtall
+      </p>
+      <p>
+        Primtall er tall som kun er delelig på seg selv og 1.
+      </p>
+      <p class="in-box-headline">Eksempel på primtall</p>
+      <p>2, 3, 5, 7, 11, 13, 17, 19</p>
+      <p class="in-box-headline">Eksempel på tall som ikke er primtall</p>
+      <p>9 er <strong>ikke</strong> et primtall, fordi det er delelig på 3.</p>
+      <p>Alle andre partall enn 2 er <strong>ikke</strong> primtall, fordi det kan deles på 2.</p>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Hvordan primtallsfaktorisere
+      </p>
+      <p>
+        Det finnes mange måter å primtallsfaktorisere på. På den ene måten, 
+        setter vi opp tallet, og setter en lang strek ved siden av. På høyre side 
+        av streken er tallet vi deler på. På venstre side er svaret vi får når vi deler.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>La oss si at vi skal primtallsfaktorisere tallet 18.</p>
+      <table>
+        <tr>
+          <th>Tallet vi starter med</th>
+          <th>Hva vi deler på</th>
+          <th>Hva har skjedd?</th>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>2</td>
+          <td>Vi starter med 18, og deler det på 2</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>3</td>
+          <td>18:2=9. Så deler vi det på 3</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>3</td>
+          <td>9:3=3. Så deler vi det på 3.</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td>3:3=1. Når vi har fått 1, er vi ferdige.</td>
+        </tr>
+      </table>
+      <p>
+        Alle faktorene står på høyre side (altså midterste kolonne). 
+        Derfor får vi:
+      </p>
+      <p>18 = 2&#215;3&#215;3</p>
+    </div>
+  </div>
+{% endblock %}

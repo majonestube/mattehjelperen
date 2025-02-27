@@ -1,0 +1,141 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_figurtall', category='Regelbok', title='Figurtall')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_figurtall')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Figurtall
+    </h1>
+    <div class="info">
+      <p>
+        Figurtall bruker vi for å beskrive hvordan noen figurer utvikler seg. Det kan være nyttig 
+        å studere figurene for å se om man skjønner hva som skjer. 
+      </p>
+      <p>
+        <strong>Figurtall</strong>: Hvor mange "ting" som er i figuren.
+      </p>
+      <p>
+        <strong>n</strong>: Figurnummeret, altså hvilken figur det er i rekka.
+      </p>
+      <p>
+        <strong>f<sub>n</sub></strong>: Figurtallet til figur nummer "n".
+      </p>
+    </div>
+    <div>
+      <img class="figurtall-img" src="{{url_for('static', filename='pictures/figurtall-forklaring.png')}}">
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Hvordan følge en formel
+      </p>
+      <p>
+        Vi pleier å ha en formel for hvordan et mønster utvikler seg.
+        Denne formelen kan vi bruke til å finne ut av hva figurtallet til 
+        hvilket som helst figurnummer skal være.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <p>
+        I mønsteret ovenfor tar vi figurnummeret, og ganger det med to. Derfor er
+        formelen: <strong>f<sub>n</sub> = 2n</strong>
+      </p>
+      <p>
+        Om vi skal finne figurtallet til figur nummer 10: <strong>
+          f<sub>10</sub> = 2 &#215; 10 = 20</strong>
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Finne direkteformel - Generelt</p>
+      <p>
+        En direkteformel er en formel der man kan sette figurnummeret
+        (n) direkte inn i formelen, og få ut figurtallet. Man prøver å se 
+        en sammenheng mellom figurnummeret og figurtallet. 
+        En formel starter alltid med "f<sub>n</sub> = ...", og har 
+        "n" som en del av formelen.
+      </p>
+      <p>
+        Det er en god idé å starte med å skrive alle figurtallene, 
+        og skrive dem som regnestykker slik at mest mulig er likt. Det vil
+        si at det er flere <span class="red">konstanter</span> og kun én <span class="blue">variabel</span>.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <img src="{{url_for('static', filename='pictures/figurtall-eksempel.png')}}">
+      <p>
+        f<sub>1</sub> = 1 = <span class="red">1</span> + <span class="blue">0</span> &#215; <span class="red">4</span>
+      </p>
+      <p>
+        f<sub>2</sub> = 5 = 1 + 4 = <span class="red">1</span> + <span class="blue">1</span> &#215; 4
+      </p>
+      <p>
+        f<sub>3</sub> = 9 = 1 + 4 + 4 = <span class="red">1</span> + <span class="blue">2</span> &#215; 4
+      </p>
+      <p>
+        På slutten har vi tre regnestykker som ligner veldig, med en variabel (markert med blått). Om vi sammenligner
+        variabelen med figurnummeret (n), ser vi at variabelen er én mindre. Derfor kan formelen skrives slik:
+      </p>
+      <p>
+        f<sub>n</sub> = <span class="red">1</span> + <span class="blue">(n+1)</span> &#215; <span class="red">4</span>
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Finne direkteformel - Ved fast intervall</p>
+      <p>
+        Vi kan bruke en generell regel når vi har en tallfølge med fast intervall. Det vil si at 
+        man legger til det samme for hver nye figur.
+      </p>
+      <p>
+        <strong>Regel:</strong> Vi ganger intervallet med "n", og gjør så endringen som skal til for 
+        å få uttrykket til å passe med det første figurtallet.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <img src="{{url_for('static', filename='pictures/figurtall-eksempel.png')}}">
+      <p>
+        Vi kan se at vi plusser med 4 for hver nye figur. Det vil si at vi starter med uttrykket: <strong>4n</strong>
+      </p>
+      <p>
+        Vi må så få dette til å fungere for første figur, n=1:
+      </p>
+      <p>4 &#215; 1 = 4</p>
+      <p>
+        Figurtallet til figur nummer 1 skal være 1, så vi må trekke fra 3, og får da:
+      </p>
+      <p>
+        f<sub>n</sub> = 4n - 3
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Finne følgeformel</p>
+      <p>
+        En følgeformel er en formel der man bruker figurtallet til forrige figur (kalles f<sub>n-1</sub>) for
+        å finne neste. Man prøver å finne en sammenheng mellom figurtallet og forrige figurtall. En slik 
+        formel starter alltid med "f<sub>n</sub> = ...", og har "f<sub>n-1</sub>" som en del av formelen.
+      </p>
+      <p class="in-box-headline">Eksempel</p>
+      <img src="{{url_for('static', filename='pictures/figurtall-eksempel.png')}}">
+      <p>
+        Det er en god idé å starte med å skrive alle figurtallene, og gjerne inkludere forrige figurtall.
+        Regnestykkene skal gjerne være så like som mulig.
+      </p>
+      <p>f<sub>1</sub> = <span class="red">1</span></p>
+      <p>f<sub>2</sub> = <span class="red">1</span> <span class="blue"> + 4</span> = <span class="red">5</span></p>
+      <p>f<sub>3</sub> = <span class="red">5</span><span class="blue"> + 4</span> = 9</p>
+      <p>
+        Her ser vi at vi tar <strong>forrige figurtall</strong>, og legger til 4. Da blir formelen:
+      </p>
+      <p>
+        f<sub>n</sub> = <span class="red">f<sub>n-1</sub></span><span class="blue"> + 4</span>
+      </p>
+    </div>
+  </div>
+{% endblock %}

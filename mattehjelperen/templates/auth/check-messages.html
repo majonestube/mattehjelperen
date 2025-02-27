@@ -1,0 +1,30 @@
+{% extends 'my-page.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/posts.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/my-page.css')}}">
+{% endblock %}
+
+{% block content %}
+  <div class="post-section">
+    {% for message in messages %}
+      <article class="post">
+        <div class="post-header">
+          <h3>
+            {{message['topic']}}
+          </h3>
+          <div class="about">{{message['username']}}-{{message['created'].strftime('%d-%m-%Y')}}</div>
+        </div>
+        <p class="post-body">
+          {{message['body']}}
+        </p>
+        <div>
+            <a class="edit-link" onclick="return confirm('Er du sikker?');" href="{{url_for('general.delete_message', id=message['message_id'])}}">Slett</a>
+        </div>
+      </article>
+      {% if not loop.last %}
+        <p></p>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

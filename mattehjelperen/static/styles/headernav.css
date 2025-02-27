@@ -1,0 +1,137 @@
+header {
+  background-color: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  font-family: "Jersey 25", sans-serif;
+  font-size: 32px;
+  padding-left: 20px;
+  z-index: 100;
+  justify-content: space-between;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.05);
+}
+
+.page-title-section {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  vertical-align: middle;
+}
+
+.page-title {
+  margin-left: 10px;
+  width: 50px;
+}
+.page-title:active {
+  opacity: 0.8;
+}
+
+.pagename {
+  margin-left: 12px;
+  opacity: 0.7;
+  flex: 1;
+}
+
+@media (max-width: 650px) {
+  .pagename {
+    display: none
+  }
+}
+
+@media (min-width: 499px) {
+  .small-screen {
+    display: none
+  }
+}
+
+@media (max-width: 500px) {
+  .wide-screen {
+    display: none
+  }
+
+}
+
+
+
+a {
+  text-decoration: none;
+  color:black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+nav img {
+  height: 40px;
+  padding-top: 10px;
+  position: relative;
+}
+
+.profile-icon {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  margin-top: 6px;
+  margin-left: -5px;
+
+}
+
+nav img:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+nav img:active {
+  opacity: 0.7;
+}
+
+nav .tooltip,
+.registrer-tooltip {
+  position: absolute;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 13px;
+  background-color: rgb(167, 167, 167);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  bottom: -25px;
+  pointer-events: none;
+  transition: opacity 0.1s;
+  opacity: 0;
+  text-align: center;
+}
+
+.rulebook-icon-container:hover .tooltip, 
+.tasks-icon-container:hover .tooltip, 
+.video-icon-container:hover .tooltip, 
+.link-icon-container:hover .tooltip,
+.profile-icon-container:hover .tooltip,
+.profile-icon-container:hover .registrer-tooltip {
+  opacity: 0.8;
+  align-items: center;
+}
+
+.rulebook-icon-container .tooltip,
+.link-icon-container .tooltip {
+  margin-left: 6px;
+}
+
+.profile-icon-container .tooltip {
+  bottom: -30px;
+  right: 4px;
+  width: 35px;
+}
+
+.registrer-tooltip {
+ bottom: -40px;
+ right: 2px;
+ width: 50px;
+}

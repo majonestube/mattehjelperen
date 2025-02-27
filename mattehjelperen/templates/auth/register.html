@@ -1,0 +1,51 @@
+{%extends 'base.html' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename='styles/auth.css')}}">
+{% endblock %}
+
+{% block title %}Registrer deg - {% endblock %}
+
+{% block content %}
+  {% for message in get_flashed_messages() %}
+    <div class="flash">
+      {{message}}
+    </div>
+  {% endfor %}
+  <div class="auth-page">
+    {% if error %}
+      <div class="auth-error">
+        {{error}}
+      </div>
+    {% endif %}
+    <form class="register-form" method = "post">
+      <div class="username-container">
+        <label for="username">Brukernavn</label>
+        <input name="username" id="username" required>
+      </div>
+      <div class="password-container">
+        <label for="password">Passord</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+      <div class="confirm-password-container">
+        <label for="password">Bekreft passord</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+      </div>
+      <div>
+        <button class="submit-button" type="submit">Registrer</button>
+      </div>
+    </form>
+
+    <div class="change-page-container">
+      <div class="text">
+        Har du bruker?
+      </div>
+      <div class="link">
+        <a class='register-link' href="{{url_for('auth.login')}}">
+          Logg inn
+        </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/my-page.css')}}">
+{% endblock %}
+
+{% block title %}Min side -{% endblock %}
+
+{% block pagename %}Min side{% endblock %}
+
+{% block content %}
+  <div class="my-page-buttons">
+    <div>
+      <form action="{{url_for('auth.logout')}}">
+        <button type="submit" class="logout-button">Logg ut</button>
+      </form>
+    </div>
+    <div>
+      <form action="{{url_for('auth.change_password')}}">
+        <button type="submit" class="change-password-button">Bytt passord</button>
+      </form>
+    </div>
+    {% if g.user['admin'] == 1 %}
+      <div>
+        <form action="{{url_for('general.create_post')}}">
+          <button type="submit" class="create-post-button">Ny post</button>
+        </form>
+      </div>
+      <div>
+        <form action="{{url_for('auth.admin_change_password')}}">
+          <button type="submit" class="admin-change-password-button">Bytt passord til bruker</button>
+        </form>
+      </div>
+      <div>
+        <form action="{{url_for('auth.check_messages')}}">
+          <button type="submit" class="check-messages-button">Meldinger ({{messages_count}})</button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+  <div class="favorites">
+    {% for favorite in favorites %}
+      <a href="{{url_for(favorite['page_id'])}}">
+        <div class="favorite">
+          <div class="favorite-category">
+            {{favorite['category']}}
+          </div>
+          <div class="favorite-title">
+            {{favorite['title']}}
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

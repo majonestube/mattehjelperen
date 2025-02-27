@@ -1,0 +1,66 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <h1>
+    Tall og tallregning
+  </h1>
+  <div class="rulebook-category-nav">
+    <a href="{{url_for('pages.rulebook_brok_prosent')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Brøk, prosent og desimaltall
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_brokregning')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Brøkregning
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_delelighet')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Delelighet
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_kvadratrot')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Kvadrattall og kvadratrot
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_overslag')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Overslag
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_potenser')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Potenser
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_primtallsfaktorisering')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Primtalls-faktorisering
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_regnerekkefolge')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Regne-rekkefølge
+        </div>
+      </div> 
+    </a>
+  </div>
+
+{% endblock %}

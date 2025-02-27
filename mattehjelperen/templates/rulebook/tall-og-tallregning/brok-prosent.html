@@ -1,0 +1,107 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_brok_prosent', category='Regelbok', title='Brøk, prosent og desimaltall')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_brok_prosent')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Brøk, prosent og desimaltall
+    </h1>
+    <div class="info">
+      Brøk, prosent og desimaltall er flere sider av samme mynt.
+      Man kan skrive et tall på alle tre måtene, og tallet er fortsatt verdt det samme.
+    </div>
+    <div>
+      <p class="headline">
+        Her er en tabell med noen av de vanligste tallene:
+      </p>
+      <table>
+        <tr>
+          <th>Desimaltall</th>
+          <th>Prosent</th>
+          <th>Brøk</th>
+        </tr>
+        <tr>
+          <td>0,01</td>
+          <td>1%</td>
+          <td><sup>1</sup>&frasl;<sub>100</sub></td>
+        </tr>
+        <tr>
+          <td>0,1</td>
+          <td>10%</td>
+          <td><sup>1</sup>&frasl;<sub>10</sub></td>
+        </tr>
+        <tr>
+          <td>0,2</td>
+          <td>20%</td>
+          <td><sup>1</sup>&frasl;<sub>5</sub></td>
+        </tr>
+        <tr>
+          <td>0,25</td>
+          <td>25%</td>
+          <td><sup>1</sup>&frasl;<sub>4</sub></td>
+        </tr>
+        <tr>
+          <td>0,33...</td>
+          <td>33,3...%</td>
+          <td><sup>1</sup>&frasl;<sub>3</sub></td>
+        </tr>
+        <tr>
+          <td>0,5</td>
+          <td>50%</td>
+          <td><sup>1</sup>&frasl;<sub>2</sub></td>
+        </tr>
+        <tr>
+          <td>0,75</td>
+          <td>75%</td>
+          <td><sup>3</sup>&frasl;<sub>4</sub></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>100%</td>
+          <td><sup>1</sup>&frasl;<sub>1</sub></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <p class="headline">
+        Omgjøring fra en form til den andre:
+      </p>
+      <table>
+        <tr>
+          <th>Fra &rarr; Til</th>
+          <th>Regel</th>
+          <th>Eksempel</th>
+        </tr>
+        <tr>
+          <td>Desimaltall &rarr; Prosent</td>
+          <td>Ganger med 100</td>
+          <td>0,322 &#215; 100 = 32,2%</td>
+        </tr>
+        <tr>
+          <td>Prosent &rarr; Brøk</td>
+          <td>100 under brøkstreken, og forkorter</td>
+          <td>12% = <sup>12:4</sup>&frasl;<sub>100:4</sub> = <sup>3</sup>&frasl;<sub>25</sub></td>
+        </tr>
+        <tr>
+          <td>Brøk &rarr; Desimaltall</td>
+          <td>Sett opp som delestykke</td>
+          <td><sup>1</sup>&frasl;<sub>3</sub> = 1 : 3 = 0,33...</td>
+        </tr>
+      </table>
+    </div>
+    
+    
+  </div>
+{% endblock %}

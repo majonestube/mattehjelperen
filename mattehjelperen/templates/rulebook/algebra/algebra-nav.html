@@ -1,0 +1,31 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <h1>
+    Algebra
+  </h1>
+  <div class="rulebook-category-nav">
+    <a href="{{url_for('pages.rulebook_algebraiske_uttrykk')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Algebraiske uttrykk
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_figurtall')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Figurtall
+        </div>
+      </div>
+    </a>
+    <a href="{{url_for('pages.rulebook_likninger')}}">
+      <div class="rulebook-page-nav">
+        <div class="rulebook-description">
+          Likninger
+        </div>
+      </div>
+    </a>
+  </div>
+
+{% endblock %}

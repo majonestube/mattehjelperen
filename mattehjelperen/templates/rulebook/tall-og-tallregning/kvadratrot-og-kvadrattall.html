@@ -1,0 +1,126 @@
+{% extends 'rulebook/nav.html' %}
+
+{% block content %}
+  <div class="page">
+    {% if favorite == 0 %}
+      <form action="{{url_for('pages.add_favorite', page_id='pages.rulebook_kvadratrot', category='Regelbok', title='Kvadratrot og kvadrattall')}}">
+        <button class="favorite-button" type="submit">Legg til på min side</button>
+      </form>
+    {% elif favorite == 1 %}
+      <form action="{{url_for('pages.delete_favorite', page_id='pages.rulebook_kvadratrot')}}">
+        <button class="delete-favorite-button" type="submit">Slett fra min side</button>
+      </form>
+    {% else %}
+      <form action="{{url_for('auth.login')}}">
+        <button class="login-button" type="submit">Logg inn for å lagre side</button>
+      </form>
+    {% endif %}
+    <h1>
+      Kvadratrot og kvadrattall
+    </h1>
+    <p>
+      <strong>Kvadrattall</strong> er svaret du får når du ganger et helt tall med seg selv.
+      Det kalles kvadrattall fordi det er det samme som arealet av et kvadrat.
+    </p>
+    <img src="{{url_for('static', filename='pictures/kvadrat.png')}}">
+    <div>
+      <p class="headline">
+        Kvadrattallene under 100
+      </p>
+      <table>
+        <tr>
+          <th>Grunntall</th>
+          <th>Regnestykke</th>
+          <th>Kvadrattall</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>1&#215;1</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>2&#215;2</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>3&#215;3</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>4&#215;4</td>
+          <td>16</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>5&#215;5</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>6&#215;6</td>
+          <td>36</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>7&#215;7</td>
+          <td>49</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>8&#215;8</td>
+          <td>64</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>9&#215;9</td>
+          <td>81</td>
+        </tr>
+      </table>
+    </div>
+    <div class="box">
+      <p class="box-headline">
+        Kvadratet av et tall
+      </p>
+      <p>
+        Kvadratet av et tall finner vi ved å gange tallet med seg selv.
+      </p>
+      <p class="in-box-headline">Eksempler</p>
+      <p>
+        Kvadratet av 10 &rarr; 10&sup2; = 10&#215;10 = 100
+      </p>
+      <p>
+        Kvadratet av 11 &rarr; 11&sup2; = 11&#215;11 = 121
+      </p>
+      <p>
+        Kvadratet av 2 &rarr; 2&sup2; = 2&#215;2 = 4
+      </p>
+    </div>
+    <div class="box">
+      <p class="box-headline">Kvadratroten til et tall</p>
+      <p>
+        Kvadratroten til et tall er det du må gange med seg selv for å få tallet. 
+        Kvadratroten av a skrives slik: &#8730;a. Siden vi får et positivt tall når
+        vi ganger to negative tall, kan også kvadratroten være negativ. For å vise at
+        svaret både kan være positivt og negativt, kan man bruke dette tegnet: &plusmn;.
+      </p>
+      <p class="in-box-headline">Eksempler</p>
+      <p>
+        Kvadratroten til 16 &rarr; 16 = 4 &#215; 4 &rarr; &#8730;16 = &plusmn;4
+      </p>
+      <p>
+        Kvadratroten til 9 &rarr; 9 = 3 &#215; 3 &rarr; &#8730;9 = &plusmn;3
+      </p>
+      <p>
+        Veldig ofte er ikke en kvadratrot et helt tall. Om vi skal skrive som desimaltall, kan vi skrive
+        omtrent hva kvadratroten er. For å finne dette, må vi bruke en kalkulator
+        med kvadratrot-tegn. 
+      </p>
+      <p class="in-box-headline">Eksempler</p>
+      <p>Kvadratroten til 5 &rarr; &#8730;5 &#8776; &plusmn;2,24</p>
+      <p>Kvadratroten til 10 &rarr; &#8730;10 &#8776; &plusmn;3,16</p>
+    </div>
+  </div>
+{% endblock %}

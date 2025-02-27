@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="not-developed-page">
+    <div>
+      <h1>
+        Beklager!
+      </h1>
+      <p>
+        Denne siden er dessverre ikke ferdig enda.
+      </p>
+    </div>
+    <div class="sorry-image-container">
+      <img src="{{url_for('static', filename='icons/sorry.png')}}">
+      <div class="speaking-bubble">
+        Sorry
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}

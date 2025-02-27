@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{url_for('static', filename='styles/posts.css')}}">
+{% endblock %}
+
+{% block content %}
+  <h1>Poster</h1>
+  <div class="post-section">
+    {% for post in posts %}
+      <article class="post">
+        <div class="post-header">
+          <h3>
+            {{post['title']}}
+          </h3>
+          <div class="about">{{post['created'].strftime('%d-%m-%Y')}}</div>
+        </div>
+        <p class="post-body">
+          {{post['body']}}
+        </p>
+        <div>
+          {% if g.user['admin'] == 1 %}
+            <a class="edit-link" href="{{url_for('general.update', id=post['post_id'])}}">Rediger</a>
+          {% endif %}
+        </div>
+      </article>
+      {% if not loop.last %}
+        <p></p>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}
